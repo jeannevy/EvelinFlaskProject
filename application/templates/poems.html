@@ -1,6 +1,5 @@
-{% include "includes/top.html" %}
-<div class="container">
-    {% include "includes/nav.html" %}
+{% extends "base.html" %}
+{% block content %}
     <div class="row">
         <div class="col-md-12 text-center">
             <h1>Poems about cats</h1>            
@@ -8,7 +7,6 @@
             <p>In the cupboard with your frocks</p>
             <p>Anywhere! They don’t care! Cats sleep anywhere!</p>        </div>
     </div>
-</div>
+{% endblock %}
 
-{% include "includes/footer.html" %}
 

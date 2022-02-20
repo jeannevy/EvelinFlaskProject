@@ -13,9 +13,9 @@ def poems():
 
 @app.route("/login")
 def login():
-    return render_template("TO DO")
+    return "<h1>TO DO<h1>"
 
 @app.route("/register")
 def register():
-    return render_template("TO DO")
+    return "<h1>TO DO<h1>"
 

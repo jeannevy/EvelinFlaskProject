@@ -1,6 +1,5 @@
-{% include "includes/top.html" %}
-<div class="container">
-    {% include "includes/nav.html" %}
+{% extends "base.html" %}
+    {% block content %}
     <div class="row">
         <div class="col-md-12 text-center">
             <h1>Welcome to Cat world</h1>
@@ -13,7 +12,5 @@
 
             </div>
     </div>
-</div>
-
-{% include "includes/footer.html" %}
-
+    {% endblock %}
+    
