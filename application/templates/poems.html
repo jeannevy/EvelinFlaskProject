@@ -1,9 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
+
     <div class="row">
         <div class="col-md-12 text-center">
-            <h1>Poems about cats</h1>            
-            <h3>Cats Sleep Anywhere (Eleanor Farjeon)</h3>            <p>Fitted in a cardboard box,</p>
+            <h1>Poems about cats</h1>
+            
+            <div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Author</th>
+                            <th scope="col">Title</th>                        
+                        </tr>
+                    </thead>
+                    <tbody>
+            {% for poemData in poemsData %}
+            <tr>
+                <td scope="row">{{ poemData["author"]}}</td>
+                <td>{{poemData["title"]}}</td>
+            </tr>
+            {% endfor %}
+                        </tbody>
+                </table>
+            </div>
+
+            <h3>Cats Sleep Anywhere (Eleanor Farjeon)</h3>            <p>Fitted in a cardboard box, </p>
             <p>In the cupboard with your frocks</p>
             <p>Anywhere! They don’t care! Cats sleep anywhere!</p>        </div>
     </div>
