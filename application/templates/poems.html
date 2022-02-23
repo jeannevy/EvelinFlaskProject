@@ -1,9 +1,10 @@
 {% extends "base.html" %}
+
 {% block content %}
 
     <div class="row">
         <div class="col-md-12 text-center">
-            <h1>Poems about cats</h1>
+            <h1>Poems about cats from {{ century }} century</h1>
             
             <div>
                 <table class="table table-hover">
@@ -18,12 +19,20 @@
             <tr>
                 <td scope="row">{{ poemData["author"]}}</td>
                 <td>{{poemData["title"]}}</td>
-            </tr>
+                <td>
+                    <form action="{{url_for('readpoem')}}" method="POST">
+                        <input type="hidden" name="author" value="{{ poemData['author']}}" >
+                        <input type="hidden" name="title" value="{{ poemData['title']}}" >
+                    <button>Read</button>
+                    </form>
+                </td> 
+            </tr> 
             {% endfor %}
                         </tbody>
                 </table>
             </div>
-
+            {% block read %}
+            {% endblock %}
             <h3>Cats Sleep Anywhere (Eleanor Farjeon)</h3>            <p>Fitted in a cardboard box, </p>
             <p>In the cupboard with your frocks</p>
             <p>Anywhere! They don’t care! Cats sleep anywhere!</p>        </div>
