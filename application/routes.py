@@ -1,4 +1,4 @@
-from application import app
+from application import app, db
 from flask import render_template, request, Response 
 import json
 
@@ -40,3 +40,13 @@ def api(id=None):
         jdata = poemsData[id]
     return Response(json.dumps(jdata), mimetype="application/json") 
 
+class User(db.Document):
+    id = db.IntField( unique=True )
+    name =  db.StringField( max_length=50 )
+
+@app.route("/user")
+def user():
+    User(id=11, name='Bett').save()
+    User(id=3, name='Gergo').save()
+    users = User.objects.all()
+    return render_template("user.html", users=users)
