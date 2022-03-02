@@ -1,4 +1,8 @@
-{% extends "poems.html" %}
-{% block read %}
-<h1>You are reading this poem: author: {{ data.author }} title: {{ data.title }}</h1>
+{% extends "base.html" %}
+{% block content %}
+<h1>author: {{ data.author }} </h1>
+<h1>title: {{ data.title }}</h1>
+{% for line in data.content %}
+<p> {{ line }} </p>
+{% endfor %}
 {% endblock %}
