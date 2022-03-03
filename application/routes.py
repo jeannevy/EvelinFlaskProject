@@ -58,7 +58,7 @@ def register():
 def readpoem():
 #   cursor.execute("delete from Poem")
 #   cursor.execute("delete from User")
-#   
+    
 #   connection.commit()
 #   cursor.execute(models.create_poem_table())
 #   connection.commit()
