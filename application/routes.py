@@ -10,7 +10,9 @@ DATABASE = 'testdb1.db'
 connection = sqlite3.connect(DATABASE, check_same_thread=False)
 cursor = connection.cursor()
 
-poemsData = [{"author":"Margaret Atwood", "title":"February"}, {"author":"Eleonor Farjeon", "title":"Cats sleep anywhere"}]
+with open('application/static/poems.json') as f:
+    poemsData = json.load(f)
+    
 
 @app.route("/")
 @app.route("/index")
@@ -20,7 +22,6 @@ def index():
 
 @app.route("/poems/")
 @app.route("/poems/<century>")
-
 def poems(century="20th"):
     return render_template("poems.html", poemsData=poemsData, poems=True, century=century)
 
@@ -61,9 +62,9 @@ def readpoem():
 #   connection.commit()
 #   cursor.execute(models.create_poem_table())
 #   connection.commit()
-#   poem = models.Poem("Margaret Atwood", "February", "Winter. Time to eat fat \n and watch hockey. In the pewter mornings, the cat, \n a black fur sausage with yellow \n Houdini eyes, jumps up on the bed and tries")
+#   poem = models.Poem(poemsData[0]["author"], poemsData[0]["title"], poemsData[0]["content"])
 #   cursor.execute(poem.get_sql_insert_command_for_poem())
-#   poem2 = models.Poem("Eleonor Farjeon", "Cats sleep anywhere", "Fitted in a cardboard box, \n In the cupboard with your frocks \n Anywhere! They don’t care! Cats sleep anywhere!")
+#   poem2 = models.Poem(poemsData[1]["author"], poemsData[1]["title"], poemsData[1]["content"])
 #   cursor.execute(poem2.get_sql_insert_command_for_poem())
 #   connection.commit()
     author = request.form.get('author')
@@ -75,11 +76,11 @@ def readpoem():
 
 @app.route("/api/")
 @app.route("/api/<id>")
-def api(id=None):
+def api(id=None):    
     if id == None:
         jdata = poemsData
     else:
-        jdata = poemsData[id]
+        jdata = poemsData[int(id)]
     return Response(json.dumps(jdata), mimetype="application/json") 
 
 #class User(db.Document):

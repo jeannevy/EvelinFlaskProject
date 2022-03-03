@@ -10,9 +10,7 @@ class User():
         self.password = generate_password_hash(password)
         
     @classmethod
-    def check_password(self, hassed_password, password):
-        print(hassed_password)
-        print(password)
+    def check_password(cls, hassed_password, password):
         return check_password_hash(hassed_password, password)    
 
     def get_sql_insert_command_for_user(self):
